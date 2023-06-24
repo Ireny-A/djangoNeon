@@ -1,0 +1,19 @@
+{% extends "chat/base.html" %}
+
+{% block content %}
+
+    <div class="container">
+    <div class="border">
+        <legend align="center"><h1> Welcome to NEON chat!</h1></legend><br>
+
+    {% if user.is_authenticated %}
+                <center><a href="{% url 'profile' %}">Profile</a></center><br>
+                <center><a href="{% url 'logout' %}" >Logout</a></center>
+              {% else %}
+                <center><a href="{% url 'login' %}" >login</a></center><br>
+                <center><a href="{% url 'register' %}" >Registration</a></center>
+              {% endif %}
+    </div>
+    </div>
+
+{% endblock content %}

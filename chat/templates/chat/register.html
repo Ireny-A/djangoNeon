@@ -1,0 +1,29 @@
+{% extends "chat/base.html" %}
+
+{% block content %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="container">
+                <legend align="center">Welcome</legend>
+                <div>
+
+        {% for field in form %}
+        <div class="form-group">
+            {{field.label_tag}}
+            <div>{{field}}</div>
+            {% if field.errors%}
+            {% for error in field.errors %}
+                {{error}}
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% endfor %}
+        </div>
+
+            </div><br>
+                <center><button type="submit">Registration</button></center>
+        </form>
+
+{% endblock content %}

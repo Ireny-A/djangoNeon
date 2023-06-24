@@ -1,0 +1,47 @@
+{% extends "chat/base.html" %}
+
+{% block content %}
+
+
+
+      <div class="media">
+       <center> <img src="{{ user.profile.image.url }}"></center>
+            <center><h2>{{ user.username }}</h2></center>
+            <center><a href="{% url 'home' %}" >Go to chat selection.</a></center><br>
+
+      <form method="POST" enctype="multipart/form-data">
+
+      	{% csrf_token %}
+
+      	<div class="container">
+
+            <legend align="center">Your profile</legend>
+
+             <div>
+                        {% for field in u_form %}
+                        <div class="form-group">
+                            {{field.label_tag}}
+                         <div>{{field}}</div>
+                        {% endfor %}
+                    </div><br>
+                 <div>
+                        {% for field in p_form %}
+                        <div class="form-group">
+                            {{field.label_tag}}
+                         <div> {{field}} </div>
+                        {% endfor %}
+
+                     </div><br>
+                 </div>
+             </div>
+        </div><br>
+
+      	<div class="form-group">
+          	<center><button type="submit">Refresh</button></center>
+      	</div>
+  	</form>
+    </div>
+    <center><a href="{% url 'logout' %}" >Logout</a></center>
+
+
+{% endblock content %}

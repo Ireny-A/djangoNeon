@@ -1,0 +1,29 @@
+{% extends "chat/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+        <div class="container">
+            <h2>Neon channels</h2>
+                    <div class="mb-2">
+                        <label for="roomInput">Enter a chat name to connect to it:</label>
+                        <input type="text"  id="roomInput" placeholder="Room name">
+                        <small id="roomInputHelp">If the chat doesn't exist yet, it will be created for you.</small>
+                    </div>
+            <button type="button" id="roomConnect" >Connect</button>
+        </div>
+
+
+        <div class="container">
+        <h2>Active chats</h2>
+                    <select multiple id="roomSelect">
+                        {% for room in rooms %}
+                            <option>{{ room }}</option>
+                        {% endfor %}
+                    </select>
+        </div>
+
+        <script src="{% static 'index.js' %}"></script>
+
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends "chat/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+        <div class="container">
+            <h2>Neon channels</h2>
+            <div class="mb-2">
+                        <label for="chatLog">Chat: {{ room.name }}</label>
+                        <textarea id="chatLog" readonly></textarea>
+                    <div class="input-group">
+                        <input type="text" id="chatMessageInput" placeholder="Enter your chat message">
+                            <button  id="chatMessageSend" type="button">Send</button>
+                    </div>
+            </div>
+            {{ room.name|json_script:"roomName" }}
+        </div>
+
+
+         <div class="container">
+            <h2>Online users</h2>
+                <select multiple class="form-control" id="onlineUsersSelector"></select>
+                <script src="{% static 'room.js' %}"></script>
+         </div>
+    <center><a href="{% url 'home' %}" >Go to chat selection.</a></center><br>
+    <center><a href="{% url 'profile' %}" >Go to profile.</a></center><br>
+
+{% endblock content %}
